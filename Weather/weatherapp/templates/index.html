@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        .Main {
+            width: 100vw;
+            min-height: 100vh;
+            border: 1px solid black;
+            background-color: #e0344c;
+        }
+
+        .navbar {
+            width: 80%;
+            height: 3em;
+            border-radius: 40px;
+            margin: 3em 0em 0em 10em;
+            color: #fff;
+        }
+
+        .Heading {
+            /* border: 1px solid black; */
+            width: 20%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            font-size: 30px;
+            font-family: cursive;
+            /* filter: drop-shadow(0 0 23px #2a2f3f); */
+        }
+
+        .Heading span {
+
+            filter: drop-shadow(0 0 23px #2a2f3f);
+        }
+
+        .Search {
+            width: 50%;
+            height: 5em;
+            /* border: 1px solid red; */
+            margin: 3em 0em 0em 19em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .Data {
+            position: relative;
+        }
+
+        .Data>input {
+            width: 500px;
+            height: 50px;
+            border-radius: 30px;
+            border: none;
+            outline: none;
+            padding: 3px 20px;
+            font-size: 18px;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .Data>.button {
+            position: absolute;
+            right: 0;
+            top: 0;
+            background: transparent;
+            /* border: 1px solid black; */
+            height: 100%;
+            width: 14%;
+        }
+
+        .CCD {
+            width: 70px;
+            height: 100%;
+            /* position: absolute; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent;
+            border-top-right-radius: 30px;
+            border-bottom-right-radius: 30px;
+            border: none;
+            /* background-color: #77529c; */
+            background-color: #2a2f3f;
+            color: #fff;
+            font-family: 'Lato', sans-serif;
+            font-size: 15px;
+        }
+
+        .WeatherBox {
+            width: 25%;
+            height: 30rem;
+            /* border: 1px solid black; */
+            margin: 2em 0em 0em 30em;
+            padding: 1.2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(18px) saturate(200%);
+            -webkit-backdrop-filter: blur(18px) saturate(200%);
+            background-color: rgba(255, 255, 255, 0.7);
+            font-family: 'Lato', sans-serif;
+        }
+        .tempBox{
+            /* border:1px solid black; 0.79*/
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            width: 100%;
+            height: 37%;
+            flex-direction: column;
+            margin-bottom: 10px;
+        }
+        .tempBox > p:nth-child(2n+1) {
+            font-size: 21px;
+        }
+        .HPbOx{
+            /* border:1px solid black; */
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            width: 100%;
+            height: 35%;
+            flex-direction:row;   
+        }
+        .Box{
+            width: 45%;
+            height: 100%;
+            /* border: 1px solid blue; */
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-direction: column;
+        }
+        .Des{
+            width: 100%;
+            height: 13%;
+            text-align: center;
+            margin-top: 10px;
+            /* border: 1px solid red; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="Main">
+        <div class="navbar">
+            <div class="Heading">
+                <img src="{% static 'images/LogoImage.png'%}" alt="" height="50px" width="50px">
+                <span>SkyCast</span>
+            </div>
+        </div>
+        <form action="" method="post" class="Search">
+            {% csrf_token %}
+            <div class="Data">
+                <input type="text" name="city" id="">
+                <div class="button">
+                    <input type="submit" value="Search" class="CCD">
+                    <!-- <img src="{% static 'images/search.png' %}" alt=""  height="30px" width="30px"> -->
+                </div>
+            </div>
+        </form>
+        <div class="WeatherBox">
+          <div class="tempBox">
+                <img src="{% static 'images/temp.png'%}" alt="" width="60px" height="70px">
+                <h6 style="font-size: 14px;"><!-- country code--></h6>
+                <p><!-- temp--></p>
+          </div>
+          <div class="HPbOx">
+            <div class="Box">
+                <h6 style="font-size: 14px;">Wind Speed</h6>
+                <img src="{% static 'images/wind.png'%}" alt="" width="60px" height="70px">
+                <p><!-- cpressure--></p>
+          </div>
+          <div class="Box">
+                <h6 style="font-size: 14px;">Humidity</h6>   
+            <img src="{% static 'images/humidity.png'%}" alt="" width="60px" height="70px">
+            <p><!--humidity--></p>
+      </div>
+          </div>
+          <div class="Des">
+            <h6 style="font-size: 14px;"><!--sescription--></h6>         
+          </div>
+        </div>
+    </div>
+</body>
+
+</html>
